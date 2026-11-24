@@ -1,8 +1,10 @@
 from typing import List, Literal
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, Response
 from pydantic import BaseModel, Field
 
+from ..accounts.deps import optional_user
+from ..accounts.history import record_analysis
 from .model import predict
 
 router = APIRouter(prefix="/dominance", tags=["dominance"])
@@ -18,5 +20,7 @@ class PredictRequest(BaseModel):
 
 
 @router.post("/predict")
-def predict_dominance(req: PredictRequest):
-    return predict([(v.file_url, v.view) for v in req.videos])
+def predict_dominance(req: PredictRequest, response: Response, user=Depends(optional_user)):
+    result = predict([(v.file_url, v.view) for v in req.videos])
+    record_analysis(user, "dominance", [v.file_url for v in req.videos], result, response)
+    return result
