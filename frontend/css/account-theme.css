@@ -1,0 +1,12 @@
+:root {
+  --acc-font: 'Karla',system-ui,sans-serif; --acc-head: 'Cormorant Garamond',Georgia,serif;
+  --acc-bg: #f4ecdc; --acc-panel: #fbf6ea; --acc-panel2: #ece1ca; --acc-field: #fffdf6;
+  --acc-ink: #2a2118; --acc-dim: #7a6c58; --acc-line: #cdbfa3;
+  --acc-accent: #b3261e; --acc-accent-ink: #ffffff;
+  --acc-danger: #b3261e; --acc-ok: #2f6b3f; --acc-warn: #a97a1d;
+  --acc-radius: 2px; --acc-border: 3px double #cdbfa3; --acc-shadow: 0 14px 36px rgba(60,40,10,.22); --acc-card-shadow: none;
+  --acc-head-weight: 600; --acc-head-style: italic; --acc-head-case: none; --acc-head-track: 0;
+  --acc-track: .02em; --acc-case: none;
+  --acc-page-bg: #f4ecdc; --acc-scrim: rgba(42,33,24,.5); --acc-glow: rgba(179,38,30,.18);
+  color-scheme: light;
+}
