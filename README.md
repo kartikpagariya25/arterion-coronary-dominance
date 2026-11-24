@@ -54,6 +54,13 @@ Tests: `cd backend && pytest tests`.
 
 `training/src`: `build_cache.py` (index, split, frame cache) → `train.py` → `evaluate.py` → `export_onnx.py` (parity-checked) → `infer.py`. Real dataset structure and decisions are in `training/STATUS.md`.
 
+## Documentation
+
+- [Model card](MODEL_CARD.md): data, results and limitations
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security and privacy](SECURITY.md)
+
 ## Data and licences
 
 Code: MIT. Dataset: Kruzhilov et al., *Scientific Data* 2025, CC0-1.0.
