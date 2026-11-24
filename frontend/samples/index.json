@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sample-right",
+    "title": "Sample study A",
+    "truth": "right",
+    "files": [
+      {
+        "file": "samples/right_rca.mp4",
+        "view": "RCA"
+      },
+      {
+        "file": "samples/right_lca.mp4",
+        "view": "LCA"
+      }
+    ]
+  },
+  {
+    "id": "sample-left",
+    "title": "Sample study B",
+    "truth": "left",
+    "files": [
+      {
+        "file": "samples/left_rca.mp4",
+        "view": "RCA"
+      },
+      {
+        "file": "samples/left_lca.mp4",
+        "view": "LCA"
+      }
+    ]
+  }
+]

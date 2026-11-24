@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arterion Coronary Dominance</title>
+<meta name="description" content="Predict right- or left-coronary dominance from angiogram runs. Research prototype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f4ecdc'/%3E%3Cpath d='M10 6c-3 6-3 13 5 20M17 7c6 4 8 11 3 18' stroke='%23b3261e' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="folio"><span>Arterion</span><i></i><span>Plate III</span><i></i><span id="status" class="status" role="status">connecting…</span></div>
+    <h1>Coronary <em>dominance</em></h1>
+    <p class="deck">Which artery nourishes the back of the heart? Add the right- and left-coronary angiogram runs from one study and the model reads off the dominance.</p>
+  </div>
+</header>
+
+<main class="wrap plate">
+  <section class="study" aria-label="Study builder">
+    <h2><span>I.</span> The study</h2>
+
+    <div class="slots">
+      <div class="slot" id="slot-RCA" data-view="RCA">
+        <div class="slot-h"><b>Right coronary</b><small>RCA runs · up to 4</small></div>
+        <label class="dz" for="in-RCA"><span class="plus">+</span><span>Add RCA video</span><input id="in-RCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
+        <ul class="chips" id="chips-RCA"></ul>
+      </div>
+      <div class="slot" id="slot-LCA" data-view="LCA">
+        <div class="slot-h"><b>Left coronary</b><small>LCA runs · up to 4</small></div>
+        <label class="dz" for="in-LCA"><span class="plus">+</span><span>Add LCA video</span><input id="in-LCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
+        <ul class="chips" id="chips-LCA"></ul>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="go" id="go" disabled>Read dominance</button>
+      <button class="link" id="clear" hidden>Clear study</button>
+    </div>
+
+    <div class="samples" id="samples" hidden><span>No data to hand? Load a held-out sample study:</span><span id="sampleBtns"></span></div>
+    <div class="note warn" id="notice" hidden></div>
+    <div class="note err" id="error" role="alert" hidden></div>
+
+    <details class="perf">
+      <summary>How well does it work?</summary>
+      <p>Evaluated on <b>117 held-out studies</b> (CoronaryDominance, study-level split). Using up to four runs per study: AUROC <b>0.996</b>, balanced accuracy <b>96%</b>. Using just one run of each view: 94%. One RCA run alone: 94% · one LCA run alone: 88%.</p>
+      <p>Studies are anonymised, so patient overlap between splits cannot be excluded; numbers may be optimistic on other hospitals' data.</p>
+    </details>
+  </section>
+
+  <section class="atlas" aria-label="Result">
+    <h2><span>II.</span> The reading</h2>
+    <figure class="heart-fig" id="figure" data-state="idle">
+      <svg viewBox="0 0 420 476" role="img" aria-label="Schematic of the coronary arteries">
+        <defs><radialGradient id="tissue" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#f4d9cb"/><stop offset="1" stop-color="#e2b9a6"/></radialGradient></defs>
+        <path class="aorta" d="M206 92C204 36 236 20 270 46"/>
+        <path class="heart" d="M210 118C210 54 128 36 88 88C48 140 82 256 210 444C338 256 372 140 332 88C292 36 210 54 210 118Z"/>
+        <g class="vessels">
+          <path id="v-lad" class="vessel lad" d="M224 116C246 170 244 270 230 350C224 386 218 412 212 428"/>
+          <path id="v-lcx" class="vessel lcx" d="M232 120C296 120 334 152 332 204C330 254 302 304 270 346"/>
+          <path id="v-rca" class="vessel rca" d="M196 110C140 112 98 150 98 212C98 282 146 350 192 408"/>
+          <path id="v-pda-r" class="vessel pda pda-r" d="M192 408C204 420 216 414 224 376"/>
+          <path id="v-pda-l" class="vessel pda pda-l" d="M270 346C256 386 236 412 226 380"/>
+        </g>
+        <g class="lbl">
+          <text x="14" y="236" text-anchor="start">RCA</text>
+          <text x="252" y="214">LAD</text>
+          <text x="352" y="276" text-anchor="start">LCx</text>
+          <text x="210" y="464" text-anchor="middle">PDA</text>
+        </g>
+      </svg>
+      <figcaption id="figcap">The schematic highlights the artery that supplies the posterior descending branch (PDA).</figcaption>
+    </figure>
+
+    <div class="reading" id="reading" hidden>
+      <p class="kicker" id="kicker">Predicted</p>
+      <h3 id="verdict"></h3>
+      <div class="meter" aria-hidden="true"><span>Right</span><div class="bar"><i id="mark"></i></div><span>Left</span></div>
+      <p class="conf" id="conf"></p>
+      <ul class="runs" id="runs"></ul>
+      <p class="note info" id="viewNote" hidden></p>
+      <p class="truth" id="truth" hidden></p>
+    </div>
+    <p class="idle-note" id="idleNote">Add at least one run to begin.</p>
+    <div class="busy" id="busy" hidden><i></i><b id="busyText">Reading study…</b></div>
+  </section>
+</main>
+
+<footer class="wrap foot">Research prototype — not a medical device. Schematic is illustrative, not anatomically exact. · <a href="https://github.com/kartikpagariya25/arterion-coronary-dominance">Source on GitHub</a></footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
