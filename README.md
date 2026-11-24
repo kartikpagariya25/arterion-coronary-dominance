@@ -1,5 +1,7 @@
 # Arterion Coronary Dominance
 
+[![tests](https://github.com/kartikpagariya25/arterion-coronary-dominance/actions/workflows/test.yml/badge.svg)](https://github.com/kartikpagariya25/arterion-coronary-dominance/actions/workflows/test.yml) ![licence](https://img.shields.io/badge/licence-MIT-blue) ![python](https://img.shields.io/badge/python-3.11-blue)
+
 Predicts whether a patient is **right- or left-dominant** (which coronary artery supplies the posterior descending branch) from the right- and left-coronary angiogram runs of one study.
 
 ![Screenshot](docs/screenshot.jpg)
