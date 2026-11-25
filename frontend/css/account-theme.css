@@ -1,12 +1,13 @@
 :root {
-  --acc-font: 'Karla',system-ui,sans-serif; --acc-head: 'Cormorant Garamond',Georgia,serif;
-  --acc-bg: #f4ecdc; --acc-panel: #fbf6ea; --acc-panel2: #ece1ca; --acc-field: #fffdf6;
-  --acc-ink: #2a2118; --acc-dim: #7a6c58; --acc-line: #cdbfa3;
-  --acc-accent: #b3261e; --acc-accent-ink: #ffffff;
-  --acc-danger: #b3261e; --acc-ok: #2f6b3f; --acc-warn: #a97a1d;
-  --acc-radius: 2px; --acc-border: 3px double #cdbfa3; --acc-shadow: 0 14px 36px rgba(60,40,10,.22); --acc-card-shadow: none;
-  --acc-head-weight: 600; --acc-head-style: italic; --acc-head-case: none; --acc-head-track: 0;
-  --acc-track: .02em; --acc-case: none;
-  --acc-page-bg: #f4ecdc; --acc-scrim: rgba(42,33,24,.5); --acc-glow: rgba(179,38,30,.18);
+  --acc-font: 'Albert Sans',system-ui,sans-serif; --acc-head: 'Sora','Albert Sans',system-ui,sans-serif;
+  --acc-bg: #fbece6; --acc-panel: #fffbf9; --acc-panel2: #f9efe9; --acc-field: #ffffff;
+  --acc-ink: #2a1f3d; --acc-dim: #6f6382; --acc-line: rgba(42,31,61,.13);
+  --acc-accent: #12806f; --acc-accent-ink: #ffffff;
+  --acc-danger: #b3263f; --acc-ok: #12806f; --acc-warn: #b8741a;
+  --acc-radius: 22px; --acc-border: 1px solid rgba(255,255,255,.9); --acc-shadow: 0 30px 60px -28px rgba(90,50,80,.38); --acc-card-shadow: 0 24px 44px -30px rgba(90,50,80,.35);
+  --acc-head-weight: 700; --acc-head-style: normal; --acc-head-case: none; --acc-head-track: -.03em;
+  --acc-track: 0; --acc-case: none; --acc-pill: 999px; --acc-top: 12px;
+  --bg: #fbece6; --a1: #d9d4fb; --a2: #ffd5c2; --a3: #ffe6d6; --ease: cubic-bezier(.16, 1, .3, 1); --solid: #ffffff;
+  --acc-page-bg: radial-gradient(900px 520px at 88% -10%, #d9d4fb 0, transparent 60%), radial-gradient(800px 520px at -5% 8%, #ffd5c2 0, transparent 60%), #fbece6; --acc-scrim: rgba(42,31,61,.4); --acc-glow: rgba(18,128,111,.22);
   color-scheme: light;
 }

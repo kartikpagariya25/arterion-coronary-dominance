@@ -8,6 +8,6 @@ window.ARTERION_APP = {
   },
   // One-line summary of a saved result, shown at the top of its details.
   headline: function (r) {
-    return String(r.dominance_type || '').replace(/^./, function (c) { return c.toUpperCase(); }) + '-dominant · ' + Math.round((r.confidence || 0) * 100) + '% confidence';
+    return String(r.dominance_type || '').replace(/^./, function (c) { return c.toUpperCase(); }) + '-dominant, ' + Math.round((r.confidence || 0) * 100) + '% confidence';
   },
 };
