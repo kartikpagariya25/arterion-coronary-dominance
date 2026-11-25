@@ -101,7 +101,7 @@ def predict(videos: list) -> dict:
     if _session is None:
         return {
             "dominance_type": "unknown", "confidence": 0.0, "views_used": [], "per_video": [],
-            "summary": "Coronary dominance model weights not found — training not yet completed.",
+            "summary": "Coronary dominance model weights not found, so training has not been completed.",
         }
 
     clips = [_clip(f) for f, _ in frames]
