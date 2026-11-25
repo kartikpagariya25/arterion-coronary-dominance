@@ -3,6 +3,7 @@ window.ARTERION_APP = {
   slug: "dominance",
   name: "Arterion Coronary Dominance",
   home: "index.html",
+  graphic: {type:"flow", colors:["#d9564a","#3f5fd0"]},
   tasks: {
     "dominance": "Coronary dominance"
   },
