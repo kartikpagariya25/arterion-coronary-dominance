@@ -5,47 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arterion Coronary Dominance</title>
 <meta name="description" content="Predict right- or left-coronary dominance from angiogram runs. Research prototype.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f4ecdc'/%3E%3Cpath d='M10 6c-3 6-3 13 5 20M17 7c6 4 8 11 3 18' stroke='%23b3261e' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/app.css">
-<meta name="theme-color" content="#f4ecdc">
+<meta name="theme-color" content="#fbece6">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Arterion Coronary Dominance">
 <meta property="og:description" content="Right- or left-dominance prediction from the right- and left-coronary angiogram runs of one study. Research prototype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2312806f'/%3E%3Cpath d='M10 7c-3 6-3 13 5 19M17 8c6 4 8 11 3 17' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/fx.css">
+<link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="css/account-theme.css">
 <link rel="stylesheet" href="css/account.css">
 </head>
 <body>
 <noscript><p style="padding:1rem;font:16px sans-serif">This page needs JavaScript to upload a file and show the result.</p></noscript>
-<header class="masthead">
-  <div class="wrap">
-    <div class="folio"><span>Arterion</span><i></i><span>Plate III</span><i></i><span id="status" class="status" role="status">connecting…</span></div>
-    <h1>Coronary <em>dominance</em></h1>
-    <p class="deck">Which artery nourishes the back of the heart? Add the right- and left-coronary angiogram runs from one study and the model reads off the dominance.</p>
+
+<header class="top rise" style="--i:0">
+  <div class="top-in">
+    <div class="brand"><span class="mark"><i class="ph-bold ph-heart" aria-hidden="true"></i></span><b>Arterion</b><span class="sub">Coronary Dominance</span></div>
+    <span id="status" class="status" role="status">Connecting</span>
   </div>
 </header>
 
+<header class="masthead wrap">
+  <h1 class="rise" style="--i:1">Which artery feeds the back of the heart?</h1>
+  <p class="deck rise" style="--i:2">Add the right and left coronary runs from one study and the model reads off the dominance.</p>
+</header>
+
 <main class="wrap plate">
-  <section class="study" aria-label="Study builder">
-    <h2><span>I.</span> The study</h2>
+  <section class="study card spot rise" style="--i:3" aria-label="Study builder">
+    <h2>Your study</h2>
 
     <div class="slots">
       <div class="slot" id="slot-RCA" data-view="RCA">
-        <div class="slot-h"><b>Right coronary</b><small>RCA runs · up to 4</small></div>
-        <label class="dz" for="in-RCA"><span class="plus">+</span><span>Add RCA video</span><input id="in-RCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
+        <div class="slot-h"><b>Right coronary</b><small>RCA runs, up to 4</small></div>
+        <label class="dz" for="in-RCA"><span class="plus"><i class="ph-bold ph-plus" aria-hidden="true"></i></span><span>Add RCA video</span><input id="in-RCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
         <ul class="chips" id="chips-RCA"></ul>
       </div>
       <div class="slot" id="slot-LCA" data-view="LCA">
-        <div class="slot-h"><b>Left coronary</b><small>LCA runs · up to 4</small></div>
-        <label class="dz" for="in-LCA"><span class="plus">+</span><span>Add LCA video</span><input id="in-LCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
+        <div class="slot-h"><b>Left coronary</b><small>LCA runs, up to 4</small></div>
+        <label class="dz" for="in-LCA"><span class="plus"><i class="ph-bold ph-plus" aria-hidden="true"></i></span><span>Add LCA video</span><input id="in-LCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
         <ul class="chips" id="chips-LCA"></ul>
       </div>
     </div>
 
     <div class="actions">
-      <button class="go" id="go" disabled>Read dominance</button>
+      <button class="go press" id="go" disabled>Read dominance</button>
       <button class="link" id="clear" hidden>Clear study</button>
     </div>
 
@@ -55,16 +62,16 @@
 
     <details class="perf">
       <summary>How well does it work?</summary>
-      <p>Evaluated on <b>117 held-out studies</b> (CoronaryDominance, study-level split). Using up to four runs per study: AUROC <b>0.996</b>, balanced accuracy <b>96%</b>. Using just one run of each view: 94%. One RCA run alone: 94% · one LCA run alone: 88%.</p>
+      <p>Evaluated on <b>117 held-out studies</b> (CoronaryDominance, study-level split). Using up to four runs per study: AUROC <b>0.996</b>, balanced accuracy <b>96%</b>. Using just one run of each view: 94%. One RCA run alone: 94%. One LCA run alone: 88%.</p>
       <p>Studies are anonymised, so patient overlap between splits cannot be excluded; numbers may be optimistic on other hospitals' data.</p>
     </details>
   </section>
 
-  <section class="atlas" aria-label="Result">
-    <h2><span>II.</span> The reading</h2>
+  <section class="atlas card spot rise" style="--i:4" aria-label="Result">
+    <h2>The reading</h2>
     <figure class="heart-fig" id="figure" data-state="idle">
       <svg viewBox="0 0 420 476" role="img" aria-label="Schematic of the coronary arteries">
-        <defs><radialGradient id="tissue" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#f4d9cb"/><stop offset="1" stop-color="#e2b9a6"/></radialGradient></defs>
+        <defs><radialGradient id="tissue" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#ffe8de"/><stop offset="1" stop-color="#f3bcc0"/></radialGradient></defs>
         <path class="aorta" d="M206 92C204 36 236 20 270 46"/>
         <path class="heart" d="M210 118C210 54 128 36 88 88C48 140 82 256 210 444C338 256 372 140 332 88C292 36 210 54 210 118Z"/>
         <g class="vessels">
@@ -94,15 +101,16 @@
       <p class="truth" id="truth" hidden></p>
     </div>
     <p class="idle-note" id="idleNote">Add at least one run to begin.</p>
-    <div class="busy" id="busy" hidden><i></i><b id="busyText">Reading study…</b></div>
+    <div class="busy" id="busy" hidden><div class="pulse"><i></i><i></i></div><b id="busyText">Reading study…</b></div>
   </section>
 </main>
 
-<footer class="wrap foot">Research prototype — not a medical device. Schematic is illustrative, not anatomically exact. · <a href="https://github.com/kartikpagariya25/arterion-coronary-dominance">Source on GitHub</a></footer>
+<footer class="wrap foot">Research prototype, not a medical device. The schematic is illustrative, not anatomically exact. <a href="https://github.com/kartikpagariya25/arterion-coronary-dominance">Source on GitHub</a></footer>
 
 <script src="js/config.js"></script>
 <script src="js/account-config.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/fx.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

@@ -12,9 +12,9 @@
     const el = $("status");
     try {
       if (!(await fetch(API + "/health", { cache: "no-store" })).ok) throw 0;
-      el.className = "status ok"; el.textContent = "api online";
+      el.className = "status ok"; el.textContent = "API online";
     } catch {
-      el.className = "status bad"; el.textContent = "api offline · " + API; setTimeout(ping, 4000);
+      el.className = "status bad"; el.textContent = "API offline at " + API; setTimeout(ping, 4000);
     }
   }
   ping();
