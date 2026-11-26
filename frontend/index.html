@@ -66,6 +66,81 @@
     </div>
   </div>
 </section>
+<section class="lp-section lp-soft" id="analyze">
+  <div class="lp-wrap"><div class="lp-head"><span class="lp-pill"><i class="ph-bold ph-flask" aria-hidden="true"></i>Live Tool</span><h2 class="lp-h2">Read a Study</h2><p class="lp-sub">Add the runs, or load a held-out sample study.</p></div></div>
+  <div class="lp-tool">
+    <main class="wrap plate">
+      <section class="study card spot rise" style="--i:3" aria-label="Study builder">
+        <h2>Your study</h2>
+
+        <div class="slots">
+          <div class="slot" id="slot-RCA" data-view="RCA">
+            <div class="slot-h"><b>Right coronary</b><small>RCA runs, up to 4</small></div>
+            <label class="dz" for="in-RCA"><span class="plus"><i class="ph-bold ph-plus" aria-hidden="true"></i></span><span>Add RCA video</span><input id="in-RCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
+            <ul class="chips" id="chips-RCA"></ul>
+          </div>
+          <div class="slot" id="slot-LCA" data-view="LCA">
+            <div class="slot-h"><b>Left coronary</b><small>LCA runs, up to 4</small></div>
+            <label class="dz" for="in-LCA"><span class="plus"><i class="ph-bold ph-plus" aria-hidden="true"></i></span><span>Add LCA video</span><input id="in-LCA" type="file" accept="video/*,.npz,image/*" multiple hidden></label>
+            <ul class="chips" id="chips-LCA"></ul>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="go press" id="go" disabled>Read dominance</button>
+          <button class="link" id="clear" hidden>Clear study</button>
+        </div>
+
+        <div class="samples" id="samples" hidden><span>No data to hand? Load a held-out sample study:</span><span id="sampleBtns"></span></div>
+        <div class="note warn" id="notice" hidden></div>
+        <div class="note err" id="error" role="alert" hidden></div>
+
+        <details class="perf">
+          <summary>How well does it work?</summary>
+          <p>Evaluated on <b>117 held-out studies</b> (CoronaryDominance, study-level split). Using up to four runs per study: AUROC <b>0.996</b>, balanced accuracy <b>96%</b>. Using just one run of each view: 94%. One RCA run alone: 94%. One LCA run alone: 88%.</p>
+          <p>Studies are anonymised, so patient overlap between splits cannot be excluded; numbers may be optimistic on other hospitals' data.</p>
+        </details>
+      </section>
+
+      <section class="atlas card spot rise" style="--i:4" aria-label="Result">
+        <h2>The reading</h2>
+        <figure class="heart-fig" id="figure" data-state="idle">
+          <svg viewBox="0 0 420 476" role="img" aria-label="Schematic of the coronary arteries">
+            <defs><radialGradient id="tissue" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#ffe8de"/><stop offset="1" stop-color="#f3bcc0"/></radialGradient></defs>
+            <path class="aorta" d="M206 92C204 36 236 20 270 46"/>
+            <path class="heart" d="M210 118C210 54 128 36 88 88C48 140 82 256 210 444C338 256 372 140 332 88C292 36 210 54 210 118Z"/>
+            <g class="vessels">
+              <path id="v-lad" class="vessel lad" d="M224 116C246 170 244 270 230 350C224 386 218 412 212 428"/>
+              <path id="v-lcx" class="vessel lcx" d="M232 120C296 120 334 152 332 204C330 254 302 304 270 346"/>
+              <path id="v-rca" class="vessel rca" d="M196 110C140 112 98 150 98 212C98 282 146 350 192 408"/>
+              <path id="v-pda-r" class="vessel pda pda-r" d="M192 408C204 420 216 414 224 376"/>
+              <path id="v-pda-l" class="vessel pda pda-l" d="M270 346C256 386 236 412 226 380"/>
+            </g>
+            <g class="lbl">
+              <text x="14" y="236" text-anchor="start">RCA</text>
+              <text x="252" y="214">LAD</text>
+              <text x="352" y="276" text-anchor="start">LCx</text>
+              <text x="210" y="464" text-anchor="middle">PDA</text>
+            </g>
+          </svg>
+          <figcaption id="figcap">The schematic highlights the artery that supplies the posterior descending branch (PDA).</figcaption>
+        </figure>
+
+        <div class="reading" id="reading" hidden>
+          <p class="kicker" id="kicker">Predicted</p>
+          <h3 id="verdict"></h3>
+          <div class="meter" aria-hidden="true"><span>Right</span><div class="bar"><i id="mark"></i></div><span>Left</span></div>
+          <p class="conf" id="conf"></p>
+          <ul class="runs" id="runs"></ul>
+          <p class="note info" id="viewNote" hidden></p>
+          <p class="truth" id="truth" hidden></p>
+        </div>
+        <p class="idle-note" id="idleNote">Add at least one run to begin.</p>
+        <div class="busy" id="busy" hidden><div class="pulse"><i></i><i></i></div><b id="busyText">Reading study…</b></div>
+      </section>
+    </main>
+  </div>
+</section>
 <script src="js/config.js"></script>
 <script src="js/account-config.js"></script>
 <script src="js/auth.js"></script>
