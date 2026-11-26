@@ -70,7 +70,7 @@
   <div class="lp-wrap"><div class="lp-head"><span class="lp-pill"><i class="ph-bold ph-flask" aria-hidden="true"></i>Live Tool</span><h2 class="lp-h2">Read a Study</h2><p class="lp-sub">Add the runs, or load a held-out sample study.</p></div></div>
   <div class="lp-tool">
     <main class="wrap plate">
-      <section class="study card spot rise" style="--i:3" aria-label="Study builder">
+      <section class="study card" aria-label="Study builder">
         <h2>Your study</h2>
 
         <div class="slots">
@@ -102,25 +102,24 @@
         </details>
       </section>
 
-      <section class="atlas card spot rise" style="--i:4" aria-label="Result">
+      <section class="atlas card" aria-label="Result">
         <h2>The reading</h2>
-        <figure class="heart-fig" id="figure" data-state="idle">
-          <svg viewBox="0 0 420 476" role="img" aria-label="Schematic of the coronary arteries">
-            <defs><radialGradient id="tissue" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#ffe8de"/><stop offset="1" stop-color="#f3bcc0"/></radialGradient></defs>
-            <path class="aorta" d="M206 92C204 36 236 20 270 46"/>
-            <path class="heart" d="M210 118C210 54 128 36 88 88C48 140 82 256 210 444C338 256 372 140 332 88C292 36 210 54 210 118Z"/>
+        <figure class="coro-fig" id="figure" data-state="idle">
+          <svg viewBox="0 0 420 380" role="img" aria-label="Schematic of the right and left coronary arteries">
+            <circle class="root" cx="210" cy="52" r="26"/>
+            <text class="aortic" x="210" y="20" text-anchor="middle">Aortic root</text>
             <g class="vessels">
-              <path id="v-lad" class="vessel lad" d="M224 116C246 170 244 270 230 350C224 386 218 412 212 428"/>
-              <path id="v-lcx" class="vessel lcx" d="M232 120C296 120 334 152 332 204C330 254 302 304 270 346"/>
-              <path id="v-rca" class="vessel rca" d="M196 110C140 112 98 150 98 212C98 282 146 350 192 408"/>
-              <path id="v-pda-r" class="vessel pda pda-r" d="M192 408C204 420 216 414 224 376"/>
-              <path id="v-pda-l" class="vessel pda pda-l" d="M270 346C256 386 236 412 226 380"/>
+              <path id="v-rca" class="vessel rca" d="M190 70C140 100 92 150 100 220C106 270 150 312 204 334"/>
+              <path id="v-pda-r" class="vessel pda pda-r" d="M204 334C222 346 240 342 252 326"/>
+              <path id="v-lad" class="vessel lad" d="M222 78C250 140 258 220 236 300"/>
+              <path id="v-lcx" class="vessel lcx" d="M232 66C300 80 344 130 334 200C328 246 300 282 264 302"/>
+              <path id="v-pda-l" class="vessel pda pda-l" d="M264 302C252 320 240 330 228 338"/>
             </g>
             <g class="lbl">
-              <text x="14" y="236" text-anchor="start">RCA</text>
-              <text x="252" y="214">LAD</text>
-              <text x="352" y="276" text-anchor="start">LCx</text>
-              <text x="210" y="464" text-anchor="middle">PDA</text>
+              <text x="30" y="224" text-anchor="start">RCA</text>
+              <text x="266" y="150">LAD</text>
+              <text x="346" y="252" text-anchor="start">LCx</text>
+              <text x="210" y="368" text-anchor="middle">PDA</text>
             </g>
           </svg>
           <figcaption id="figcap">The schematic highlights the artery that supplies the posterior descending branch (PDA).</figcaption>
