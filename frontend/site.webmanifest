@@ -1,0 +1,15 @@
+{
+  "name": "Arterion Coronary Dominance",
+  "short_name": "Arterion Dominance",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7fdf9",
+  "theme_color": "#15803d",
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
