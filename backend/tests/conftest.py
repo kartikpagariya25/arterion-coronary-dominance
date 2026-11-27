@@ -33,10 +33,10 @@ def task_request(monkeypatch):
 
     from app.dominance import router
 
-    monkeypatch.setattr(router, "predict", lambda videos: {"summary": "ok", "p_left": 60.0, "big_image": "x" * 5000, "series": list(range(500))})
+    monkeypatch.setattr(router, "predict", lambda videos: {"summary": "ok", "p_left": 0.6, "confidence": 60.0, "big_image": "x" * 5000, "series": list(range(500))})
 
     def make_body(url):
         return {"videos": [{"file_url": url, "view": "RCA"}]}
 
-    return SimpleNamespace(url="/dominance/predict", task="dominance", key="p_left",
+    return SimpleNamespace(url="/dominance/predict", task="dominance", key="confidence", metric_value=60.0,
                            make_body=make_body, body=make_body("http://testserver/static_uploads/abc123.mp4"))
