@@ -6,7 +6,7 @@ from multiprocessing import Pool
 import cv2
 import numpy as np
 
-from config import PROCESSED_DIR, SEED
+from config import SEED
 from dataset import (CACHE_DIR, CACHE_SIZE, CACHED_FRAMES, INDEX_PATH, SPLITS_PATH,
                      build_splits, cache_name, scan_index)
 

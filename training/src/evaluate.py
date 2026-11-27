@@ -2,9 +2,8 @@ import datetime
 import json
 import os
 
-import numpy as np
 import torch
-from sklearn.metrics import accuracy_score, balanced_accuracy_score, confusion_matrix, roc_auc_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 from torch.utils.data import DataLoader
 
 from config import ARTIFACTS_DIR
